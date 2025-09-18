@@ -11,6 +11,8 @@ import schedule
 import time
 from google.cloud import storage
 from google.oauth2 import service_account
+from video_generator import VideoAutomationPipeline
+
 
 # Add explicit .env loading
 from dotenv import load_dotenv
@@ -872,6 +874,10 @@ def main():
     # Initialize pipeline
     if 'pipeline' not in st.session_state:
         st.session_state.pipeline = ContentAutomationPipeline(st.session_state.ai_provider)
+    
+    
+    if 'video_pipeline' not in st.session_state:
+        st.session_state.video_pipeline = VideoAutomationPipeline()
     
     # Get available models
     available_models = st.session_state.ai_provider.get_available_models()
