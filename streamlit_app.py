@@ -2,19 +2,14 @@ import streamlit as st
 import pandas as pd
 import os
 from openai import OpenAI
-import tiktoken
 from datetime import datetime, timedelta
 import json
 import requests
 from typing import Dict, List, Optional
-import schedule
-import time
-from google.cloud import storage
-from google.oauth2 import service_account
+from dotenv import load_dotenv
 # from video_generator import VideoAutomationPipeline  # Comment out if not available
 
-# Add explicit .env loading
-from dotenv import load_dotenv
+
 load_dotenv()
 
 # Import Claude if available
