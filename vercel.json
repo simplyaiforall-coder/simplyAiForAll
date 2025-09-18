@@ -1,17 +1,15 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "streamlit_app.py",
+      "src": "*.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/streamlit_app.py"
+      "dest": "/"
     }
-  ],
-  "env": {
-    "PYTHON_VERSION": "3.11"
-  }
+  ]
 }
