@@ -1464,33 +1464,52 @@ def main():
         df = pd.DataFrame(tool_data)
         st.dataframe(df, use_container_width=True)
 
+    # Content Workflow Management Page
+    elif page == "📋 Content Workflow"
+        st.header("📋 Content Workflow Management System")
+elif page == "📋 Content Workflow":
+        st.header("📋 Content Workflow Management System")
+        
+        # Use session state for user ID (mock for now)
+        user_id = st.session_state.get('user_id', 'test_user')
+        
+        # Initialize workflow manager without database for testing
+        workflow_manager = ContentWorkflowManager(supabase_client=None)
+        
+        # Render the workflow page
+        render_content_workflow_page(workflow_manager, user_id# Content Workflow Management Page
     elif page == "📋 Content Workflow":
         st.header("📋 Content Workflow Management System")
-
+        
         # Initialize Supabase client
         if 'supabase_client' not in st.session_state:
             from supabase import create_client
             import os
-
+            
             # Get Supabase credentials from environment or secrets
             supabase_url = os.getenv("SUPABASE_URL") or st.secrets.get("SUPABASE_URL", "")
             supabase_key = os.getenv("SUPABASE_ANON_KEY") or st.secrets.get("SUPABASE_ANON_KEY", "")
-
+            
             if supabase_url and supabase_key:
                 st.session_state.supabase_client = create_client(supabase_url, supabase_key)
             else:
                 st.error("Please configure Supabase credentials in .env or Streamlit secrets")
                 st.stop()
-
+        
+        # Use session state for user ID (replace with actual auth when ready)
+        user_id = st.session_state.get('user_id', 'test_user')
+        
         # Initialize workflow manager with Supabase
         workflow_manager = ContentWorkflowManager(st.session_state.supabase_client)
-
+        
+        # Render the workflow page
+        render_content_workflow_page(workflow_manager, user_id)        
         # Use session state for user ID (mock for now)
         user_id = st.session_state.get('user_id', 'test_user')
-
+        
         # Initialize workflow manager without database for testing
         workflow_manager = ContentWorkflowManager(supabase_client=None)
-
+        
         # Render the workflow page
         render_content_workflow_page(workflow_manager, user_id)
 
